@@ -1,0 +1,22 @@
+/* Reset generale */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenitore del documento */
+.page {
+  width: 100%;
+  box-sizing: border-box;
+  break-after: page;
+}
+
+
+
+@media print {
+    /* Impostazioni di stampa */
+    @page {
+      size: A5;
+      margin: 0;
+    }    
+}

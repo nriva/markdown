@@ -1,0 +1,56 @@
+/* Imposta il formato di stampa */
+@page {
+  size: A5;
+  margin: 15mm;
+}
+
+/* Reset del contatore pagine */
+body {
+  counter-reset: page;
+}
+
+/* Ogni <section class="page"> è una pagina */
+.page {
+  position: relative;
+  page-break-after: always;
+  min-height: 210mm; /*calc(100% - 0px);*/
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+}
+
+.page .content {
+  flex: 1 0 auto;
+  column-count: 2;
+  column-gap: 10mm; /* puoi cambiare la distanza tra le colonne */
+}
+
+.single-column {
+  column-span: all;
+}
+
+
+/* Piè di pagina */
+.page .footer {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 5mm;
+}
+
+/* Numero di pagina automatico */
+.page .footer::after {
+  counter-increment: page;
+  content: "Pagina " counter(page);
+}
+
+/* Stampa: rimuovi elementi non necessari */
+@media print {
+  body {
+    margin: 0;
+  }
+}

@@ -1,0 +1,43 @@
+/* Reset generale */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  counter-reset: section;
+}
+/* Contenitore del documento */
+.page {
+  width: 100%;
+  height: calc(210mm - 50px);
+  margin: 0;
+  box-sizing: border-box;
+  break-after: page;
+  color: white;
+  background: black;
+  
+}
+
+.pagenumber::before {
+  counter-increment: section;
+  content: 'Pagina ' counter(section);
+}
+
+.pagenumber {
+  background-color: blueviolet;
+  height: 50px;
+}
+
+@page {
+  size: A5;
+  margin: 0;
+}
+
+@media print {
+    /* Impostazioni di stampa */
+    @page {
+      size: A5;
+      margin: 0;
+    }
+}

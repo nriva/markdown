@@ -1,0 +1,22 @@
+{
+  "name": "eleventy",
+  "version": "1.0.0",
+  "main": "eleventy.config.js",
+  "scripts": {
+    "go": "pandoc -s -f markdown+fenced_divs --css=style.css --output=index.html index.md",
+    "serve": "npx @11ty/eleventy --serve",
+    "http": "node serve.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "rehype": "^13.0.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
