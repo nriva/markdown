@@ -26,6 +26,10 @@ Donec lacus orci, pellentesque vitae dolor pellentesque, cursus blandit enim. Nu
 
 Example post content.
 
+::: single-column
+![figura](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhldLr5oiezFjhn1fQKDGyEcZshqPmXTmd0iIIGe2D8ZmkmMs2XnpB5ti33o3BCgFZ_igvM-XunxXVR_UkQWhc4WtW_oS5lfpx3K8bfC5SC0Jf-0iY_AARPOMl1CdeeJDCb2141E8qGVpW1kz-gMd_9FftC7x7YGVd4wGH9Wczkwc4Ch4k3zw35YuUqmYc/s1600/Copilot_20260308_185709.png)
+:::
+
 :::
 
 ::: footer

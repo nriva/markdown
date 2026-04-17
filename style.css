@@ -16,17 +16,21 @@ body {
   min-height: 210mm; /*calc(100% - 0px);*/
   display: flex;
   flex-direction: column;
-  background-color: blueviolet;
 }
 
 .page .content {
   flex: 1 0 auto;
   column-count: 2;
-  column-gap: 10mm; /* puoi cambiare la distanza tra le colonne */
+  column-gap: 5mm; /* puoi cambiare la distanza tra le colonne */
 }
 
 .single-column {
   column-span: all;
+}
+
+.content {
+  padding-left: 5mm;
+  padding-right: 5mm;
 }
 
 
@@ -46,6 +50,11 @@ body {
 .page .footer::after {
   counter-increment: page;
   content: "Pagina " counter(page);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Stampa: rimuovi elementi non necessari */
