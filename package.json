@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "serve.cjs",
   "scripts": {
-    "go": "pandoc -s -f markdown+fenced_divs --css=style.css --output=index.html index.md",
+    "go": "pandoc -s -f markdown --css=style.css --output=index.html index.md",
     "serve": "npx @11ty/eleventy --serve",
-    "http": "node serve.cjs"
+    "http": "node serve.cjs",
+    "catene-tbh": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -f markdown+implicit_figures -o catene-sotto-la-pietra.html --css blackhack-nordic.css --css blackhack-nordic-twocol.css --standalone",
+    "catene": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -o catene-sotto-la-pietra.html --css catene-sotto-la-pietra.css --standalone"
   },
   "keywords": [],
   "author": "MrBurst",

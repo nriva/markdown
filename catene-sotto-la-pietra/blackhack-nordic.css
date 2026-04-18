@@ -1,0 +1,1042 @@
+/* ============================================================
+   THE BLACK HACK — NORDIC MINIMAL
+   CSS per Pandoc (HTML + PDF via wkhtmltopdf / weasyprint)
+   
+   Uso:
+     pandoc input.md -o output.html --css blackhack-nordic.css --standalone
+     pandoc input.md -o output.pdf  --css blackhack-nordic.css --pdf-engine=weasyprint
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjord+One:wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+/* ─────────────────────────────────────────
+   PALETTE
+───────────────────────────────────────── */
+:root {
+  --n-paper:         #f2ede6;
+  --n-paper2:        #ebe4d8;
+  --n-paper3:        #ddd5c4;
+  --n-ink:           #1a1714;
+  --n-ink-soft:      #2c2620;
+  --n-ink-light:     #4a4038;
+  --n-gray:          #8a8078;
+  --n-gray-light:    #b8b0a4;
+  --n-red:           #8c2020;
+  --n-border:        rgba(26,23,20,0.32);
+  --n-border-strong: rgba(26,23,20,0.72);
+  --n-shadow:        rgba(26,23,20,0.18);
+}
+
+/* ─────────────────────────────────────────
+   RESET
+───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.half_width {
+	width: 50%
+}
+
+div.img_center p img {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ─────────────────────────────────────────
+   DESCRIPTIVE BOX — Bordi irregolari come ritaglio
+───────────────────────────────────────── */
+.descriptive {
+  background: var(--n-paper2);
+  font-style: italic;
+  color: var(--n-ink-soft);
+  font-size: 0.83em;
+  line-height: 1.6;
+  padding: 0.7em 0.9em;
+  margin: 0.8em 0;
+  position: relative;
+
+  /* Bordo irregolare — effetto cartone strappato */
+  border: 2px solid var(--n-ink);
+  clip-path: polygon(
+    0% 1.5%, 1% 0%, 99% 0.5%, 100% 0%,
+    99.5% 98.5%, 100% 100%, 1% 99.5%, 0% 100%
+  );
+
+  box-shadow:
+    3px 3px 0 var(--n-border),
+    inset 0 0 0 1px rgba(26,23,20,0.05);
+}
+
+/* Runa decorativa angolo */
+.descriptive::before {
+  content: 'ᚱ';
+  position: absolute;
+  top: 0.3em;
+  right: 0.5em;
+  font-size: 0.9em;
+  color: var(--n-red);
+  opacity: 0.35;
+  font-style: normal;
+  font-family: serif;
+}
+
+/* ─────────────────────────────────────────
+   PAGINA — @page per stampa/PDF
+───────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 2.2cm 2.4cm 2.5cm 2.4cm;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Special Elite', 'Courier New', monospace;
+    font-size: 8pt;
+    color: #8a8078;
+    letter-spacing: 0.1em;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Special Elite', monospace;
+    font-size: 7pt;
+    color: #8a8078;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+}
+
+@page :first {
+  @bottom-center { content: none; }
+  @top-right     { content: none; }
+}
+
+/* ─────────────────────────────────────────
+   BODY & DOCUMENTO
+───────────────────────────────────────── */
+html {
+  font-size: 10pt;
+}
+
+body {
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--n-ink-soft);
+  background-color: var(--n-paper);
+
+  /* Texture risografica — solo per HTML, ignorata in PDF */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.08'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 110% 105% at 35% 40%,
+      var(--n-paper) 15%,
+      var(--n-paper2) 60%,
+      var(--n-paper3) 100%
+    );
+
+  /* Contenitore centrato per HTML */
+  max-width: 21cm;
+  margin: 0 auto;
+  padding: 2.2cm 2.4cm;
+
+  /* Bordo pagina per HTML */
+  box-shadow:
+    inset 3px 0 0 var(--n-border),
+    inset -3px 0 0 var(--n-border),
+    inset 0 3px 0 var(--n-border),
+    inset 0 -3px 0 var(--n-border),
+    5px 5px 0 var(--n-shadow),
+    9px 9px 0 rgba(26,23,20,0.07);
+}
+
+/* ─────────────────────────────────────────
+   TIPOGRAFIA — TITOLI
+───────────────────────────────────────── */
+
+/* H1 — Titolo documento / capitolo principale */
+h1 {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-weight: 400;
+  font-size: 2.1em;
+  color: var(--n-ink);
+  /* SAVE: text-transform: uppercase; */
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  text-shadow:
+    1px 1px 0 rgba(26,23,20,0.28),
+    2px 2px 0 rgba(26,23,20,0.1);
+
+  /* Registra il titolo per l'header di stampa */
+  string-set: chapter-title content();
+
+  /* Evita interruzione dopo il titolo */
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* Linea grezza sotto h1 */
+h1::after {
+  content: '';
+  display: block;
+  height: 3px;
+  margin-top: 0.25em;
+  background: linear-gradient(
+    90deg,
+    var(--n-ink) 0%,
+    var(--n-ink) 62%,
+    var(--n-ink-light) 83%,
+    transparent 100%
+  );
+  box-shadow: 0 2px 0 var(--n-border);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 99.4% 35%,
+    100% 100%, 0.4% 100%, 0% 65%
+  );
+}
+
+/* H2 — Sezione */
+h2 {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  font-size: 1.18em;
+  color: var(--n-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1.6em;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--n-border-strong);
+
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+h2::before {
+  content: 'ᛟ ';
+  color: var(--n-red);
+  font-size: 1em;
+  letter-spacing: 0;
+}
+
+
+/* H3 — Sottosezione */
+h3 {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--n-red);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1.2em;
+  margin-bottom: 0.2em;
+  padding-bottom: 0.1em;
+  border-bottom: 1px dashed var(--n-border);
+
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* H4 */
+h4 {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  font-size: 0.9em;
+  color: var(--n-ink-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1em;
+  margin-bottom: 0.15em;
+
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* H5 / H6 */
+h5, h6 {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.88em;
+  color: var(--n-gray);
+  margin-top: 0.8em;
+  margin-bottom: 0.1em;
+
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* ─────────────────────────────────────────
+   PARAGRAFI & TESTO
+───────────────────────────────────────── */
+p {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.94em;
+  line-height: 1.65;
+  color: var(--n-ink-soft);
+  text-align: left;          /* OSR: ragged-right */
+  margin-top: 0;
+  margin-bottom: 0.55em;
+  hyphens: none;
+  orphans: 3;
+  widows: 3;
+}
+
+/* Capolettera typewriter sul primo p dopo h1/h2/h3 */
+/* NOTA: float:left su ::first-letter crasha WeasyPrint (AssertionError) — rimosso */
+h1 + p::first-letter,
+h2 + p::first-letter,
+h3 + p::first-letter {
+  font-family: 'Special Elite', monospace;
+  font-size: 1.6em;
+  font-weight: 400;
+  color: var(--n-ink);
+}
+
+/* Strong / Bold */
+strong, b {
+  font-weight: 700;
+  color: var(--n-ink);
+}
+
+/* Em / Italic */
+em, i {
+  font-style: italic;
+  color: var(--n-ink-soft);
+}
+
+/* Codice inline — usato per dadi, valori */
+code {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--n-ink);
+  background: rgba(26,23,20,0.07);
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--n-border);
+  letter-spacing: 0.02em;
+}
+
+/* Blocco codice — tabelle testuali, schede */
+pre {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.82em;
+  color: var(--n-ink-soft);
+  background: var(--n-paper3);
+  border-left: 4px solid var(--n-ink);
+  padding: 0.7em 1em;
+  margin: 0.8em 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 3px 3px 0 var(--n-border);
+
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+.monster-block {
+  background: transparent;
+  border: 2px solid var(--n-ink);
+  border-left: 5px solid var(--n-ink);
+  padding: 0.6em 0.8em;
+  margin: 0.8em 0;
+  position: relative;
+
+  /* Ombra offset — effetto stampa riso */
+  box-shadow: 4px 4px 0 var(--n-ink);
+}
+
+/* Runa di protezione nell'angolo */
+.monster-block::after {
+  content: 'ᚦ';
+  position: absolute;
+  bottom: 0.3em;
+  right: 0.5em;
+  font-size: 1.1em;
+  color: var(--n-red);
+  opacity: 0.3;
+}
+
+
+/* ─────────────────────────────────────────
+   STAT BLOCK — classe .stat-block
+   Uso nel Markdown:
+   
+     ::: stat-block
+     #### Nome Mostro
+     *Tipo · Allineamento*
+     
+     **PF** 18 · **CA** 14 · **Mov.** Vicino
+     
+     | FOR | DES | COS | INT | SAG | CAR |
+     |-----|-----|-----|-----|-----|-----|
+     | 14  |  9  | 16  |  6  | 10  |  4  |
+     
+     **Attacco.** Descrizione (dado).
+     :::
+───────────────────────────────────────── */
+.stat-block {
+  border: 2px solid #1a1714;
+  border-left: 5px solid #1a1714;
+  background: transparent;
+  padding: 0.65em 0.85em;
+  margin: 0.85em 0;
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(26,23,20,0.32);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Runa protettiva nell'angolo */
+.stat-block::after {
+  content: 'ᚦ';
+  position: absolute;
+  bottom: 0.3em;
+  right: 0.55em;
+  font-size: 1.1em;
+  color: #8c2020;
+  opacity: 0.28;
+  font-family: serif;
+}
+
+/* H4 dentro stat-block — nome mostro */
+.stat-block h4 {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 1em;
+  color: #1a1714;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0;
+  margin-bottom: 0.05em;
+  border: none;
+}
+
+/* Paragrafo tipo dentro stat-block */
+.stat-block p {
+  font-size: 0.83em;
+  margin-bottom: 0.18em;
+  line-height: 1.5;
+}
+
+/* Paragrafo corsivo — tipo/allineamento */
+/*
+.stat-block p:first-of-type {
+  font-style: italic;
+  color: #8a8078;
+  font-size: 0.8em;
+  margin-bottom: 0.4em;
+}
+*/
+
+/* Tabella dentro stat-block — compatta */
+.stat-block table {
+  font-size: 0.8em;
+  margin: 0.35em 0 0.4em;
+}
+
+.stat-block thead th {
+  background: #2c2620;
+  padding: 0.28em 0.5em;
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.stat-block tbody td {
+  text-align: center;
+  padding: 0.22em 0.5em;
+  border-right: 1px solid rgba(26,23,20,0.2);
+  color: #1a1714;
+  font-size: 0.95em;
+}
+
+.stat-block tbody td:first-child {
+  border-left: 1px solid rgba(26,23,20,0.2);
+  border-right: 1px solid rgba(26,23,20,0.2);
+  white-space: nowrap;
+}
+
+.sb-name {
+  font-family: 'Special Elite', monospace;
+  color: var(--n-ink);
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.05em;
+}
+
+
+.sb-stat-row {
+  display: flex; gap: 0.5em; margin: 0.3em 0;
+}
+.sb-stat {
+  text-align: center;
+  flex: 1;
+  border: 1px solid var(--n-border);
+  padding: 0.2em 0.1em;
+  background: rgba(26,23,20,0.04);
+}
+.sb-stat .val {
+  font-family: 'Special Elite', monospace;
+  font-size: 1.05em;
+  color: var(--n-ink);
+  display: block;
+  line-height: 1.2;
+}
+.sb-stat .lbl {
+  font-family: 'Special Elite', monospace;
+  /* font-size: 0.62em; */
+  color: var(--n-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.container {
+  display: flex;
+  width: 100%; /* Occupy full width of parent */
+}
+
+.box {
+  flex: 1; /* Each element takes an equal share of the space */
+  border: 1px solid black; 
+  padding: 10px;
+}
+
+/* ─────────────────────────────────────────
+   BLOCKQUOTE — Citazione / regola
+───────────────────────────────────────── */
+blockquote {
+  background: var(--n-paper3);
+  border-left: 3px solid var(--n-ink);
+  border-top: 1px solid var(--n-border);
+  border-bottom: 1px solid var(--n-border);
+  border-right: none;
+  margin: 0.9em 0 0.9em 0;
+  padding: 0.6em 0.9em 0.55em 1.1em;
+  font-style: italic;
+  font-size: 0.9em;
+  color: var(--n-ink-soft);
+  line-height: 1.65;
+  position: relative;
+  box-shadow: 2px 2px 0 var(--n-border);
+
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+blockquote::before {
+  content: '//';
+  font-family: 'Special Elite', monospace;
+  font-style: normal;
+  font-size: 1.3em;
+  color: var(--n-red);
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+/* Autore citazione — paragrafo finale in blockquote */
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote p:last-child em {
+  display: block;
+  font-style: normal;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.82em;
+  letter-spacing: 0.06em;
+  color: var(--n-gray);
+  margin-top: 0.4em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────
+   TABELLE — Rulebook old school
+───────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.85em;
+  margin: 0.8em 0 1em;
+
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Header */
+thead {
+  background: var(--n-ink);
+}
+
+thead th {
+  color: var(--n-paper);
+  text-align: left;
+  padding: 0.42em 0.7em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.88em;
+  vertical-align: bottom;
+}
+
+thead th:nth-child(even) {
+  background: #252018;
+}
+
+/* Corpo */
+tbody tr {
+  border-bottom: 1px solid var(--n-border);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(26,23,20,0.055);
+}
+
+tbody tr:last-child {
+  border-bottom: 2px solid var(--n-ink);
+}
+
+tbody td {
+  color: var(--n-ink-soft);
+  padding: 0.3em 0.7em;
+  vertical-align: top;
+  font-size: 0.92em;
+  line-height: 1.45;
+}
+
+/* Prima colonna — chiave/numero */
+tbody td:first-child {
+  color: var(--n-ink);
+  border-right: 1px solid var(--n-border);
+  white-space: nowrap;
+}
+
+/* Footer tabella */
+tfoot td {
+  font-style: italic;
+  font-size: 0.82em;
+  color: var(--n-gray);
+  border-top: 1px solid var(--n-border-strong);
+  padding: 0.28em 0.7em;
+}
+
+/* Caption */
+caption {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8em;
+  color: var(--n-gray);
+  text-align: left;
+  caption-side: bottom;
+  padding: 0.25em 0.2em 0;
+  letter-spacing: 0.05em;
+}
+
+/* ─────────────────────────────────────────
+   LISTE
+───────────────────────────────────────── */
+ul, ol {
+  padding-left: 1.4em;
+  margin: 0.3em 0 0.6em;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1.1em;
+}
+
+ul li {
+  position: relative;
+  font-size: 0.92em;
+  color: var(--n-ink-soft);
+  margin-bottom: 0.22em;
+  line-height: 1.55;
+}
+
+ul li::before {
+  content: '▪';
+  color: var(--n-red);
+  font-size: 0.82em;
+  position: absolute;
+  left: -1.1em;
+  top: 0.1em;
+}
+
+/* Liste annidate */
+ul ul li::before {
+  content: '–';
+  color: var(--n-gray);
+  font-size: 1em;
+  top: 0;
+}
+
+ol li {
+  font-size: 0.92em;
+  color: var(--n-ink-soft);
+  margin-bottom: 0.22em;
+  line-height: 1.55;
+}
+
+ol li::marker {
+  font-family: 'Special Elite', monospace;
+  color: var(--n-red);
+  font-weight: 400;
+}
+
+/* Definition list */
+dl { margin: 0.5em 0 0.8em; }
+dt {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.88em;
+  color: var(--n-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.6em;
+}
+dd {
+  font-size: 0.9em;
+  color: var(--n-ink-soft);
+  margin-left: 1.2em;
+  margin-bottom: 0.15em;
+  line-height: 1.55;
+}
+
+/* ─────────────────────────────────────────
+   SEPARATORE — HR
+───────────────────────────────────────── */
+hr {
+  border: none;
+  height: 1.6em;
+  margin: 0.7em 0;
+  position: relative;
+  background: none;
+  text-align: center;
+}
+
+hr::before {
+  content: '──── ᚷ ────';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: serif;
+  font-size: 0.9em;
+  color: var(--n-ink-light);
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+  opacity: 0.65;
+}
+
+/* ─────────────────────────────────────────
+   IMMAGINI
+───────────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 2px solid var(--n-ink);
+  box-shadow: 4px 4px 0 var(--n-ink);
+  filter: grayscale(20%) contrast(1.05);
+  margin: 0.8em 0;
+}
+
+/* Etichetta "OSR / TBH" */
+.osr-tag {
+	/* font-size: 0.75em; */
+  display: inline-block;
+  border: 1px solid var(--n-ink);
+  color: var(--n-ink);
+  font-family: 'Special Elite', monospace;
+  
+  letter-spacing: 0.12em;
+  padding: 0.1em 0.45em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 0.4em;
+  box-shadow: 1px 1px 0 var(--n-ink);
+}
+
+.sb-type {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  color: var(--n-gray);
+  /*font-size: 0.77em;*/
+  margin-bottom: 0.4em;
+}
+
+
+.sb-prop { 
+	/* font-size: 0.78em; */
+	color: var(--n-ink-soft);
+	margin: 0.15em 0;
+	line-height: 1.5;
+	font-family: 'Libre Baskerville', serif; 
+}
+.sb-prop strong {
+	/* font-size: 0.88em; */
+	font-family: 'Special Elite', monospace;
+	color: var(--n-ink); 
+	text-transform: uppercase; 
+	letter-spacing: 0.04em; 
+	font-weight: 400; 
+}
+
+figure {
+  margin: 1em 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+figcaption {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.76em;
+  color: var(--n-gray);
+  letter-spacing: 0.06em;
+  margin-top: 0.4em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────
+   LINK
+───────────────────────────────────────── */
+a {
+  color: var(--n-red);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--n-ink);
+}
+
+/* In stampa mostra URL */
+@media print {
+  a[href^="http"]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.72em;
+    color: var(--n-gray);
+    word-break: break-all;
+  }
+}
+
+/* ─────────────────────────────────────────
+   INTESTAZIONE DOCUMENTO (pandoc --standalone)
+   Pandoc genera: div#header con h1.title, p.author, p.date
+───────────────────────────────────────── */
+header, #header, .title-block {
+  margin-bottom: 1.8em;
+  padding-bottom: 0.6em;
+  border-bottom: 2px solid var(--n-border-strong);
+}
+
+.title {
+  font-family: 'Special Elite', monospace;
+  font-size: 2.2em;
+  color: var(--n-ink);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  margin-bottom: 0.1em;
+  text-shadow: 1px 1px 0 rgba(26,23,20,0.25), 2px 2px 0 rgba(26,23,20,0.1);
+}
+
+.subtitle {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.88em;
+  color: var(--n-red);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  margin-top: 0.15em;
+  margin-bottom: 0;
+}
+
+.author {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 0.86em;
+  color: var(--n-gray);
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.date {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.76em;
+  color: var(--n-gray-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.2em;
+}
+
+/* ─────────────────────────────────────────
+   INDICE (TOC — pandoc --toc)
+───────────────────────────────────────── */
+#TOC, nav#TOC {
+  background: var(--n-paper2);
+  border: 2px solid var(--n-ink);
+  border-left: 5px solid var(--n-ink);
+  padding: 0.9em 1.1em;
+  margin: 1.2em 0 1.6em;
+  box-shadow: 4px 4px 0 var(--n-border);
+
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+#TOC::before {
+  content: 'Indice  ᚱ';
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.82em;
+  color: var(--n-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid var(--n-border);
+  padding-bottom: 0.3em;
+}
+
+#TOC ul {
+  margin: 0;
+  padding-left: 0;
+}
+
+#TOC ul li {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.84em;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.18em;
+  line-height: 1.4;
+}
+
+#TOC ul li::before {
+  content: none;
+}
+
+#TOC ul li a {
+  color: var(--n-ink-soft);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#TOC ul li a:hover {
+  color: var(--n-red);
+}
+
+/* Livello 2 rientrato */
+#TOC ul ul {
+  padding-left: 1.1em;
+  margin-top: 0.1em;
+}
+
+#TOC ul ul li {
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+  color: var(--n-ink-light);
+}
+
+#TOC ul ul li::before {
+  content: '– ';
+  color: var(--n-gray);
+  position: static;
+  font-size: 1em;
+}
+
+/* ─────────────────────────────────────────
+   NOTE A PIÈ DI PAGINA
+   (pandoc genera <section class="footnotes">)
+───────────────────────────────────────── */
+.footnotes {
+  margin-top: 1.5em;
+  padding-top: 0.5em;
+  border-top: 1px solid var(--n-border-strong);
+  font-size: 0.8em;
+  color: var(--n-gray);
+}
+
+.footnotes ol {
+  padding-left: 1.2em;
+}
+
+.footnotes li {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1em;
+  color: var(--n-gray);
+  margin-bottom: 0.2em;
+  line-height: 1.5;
+}
+
+.footnotes li::marker {
+  font-family: 'Special Elite', monospace;
+  color: var(--n-red);
+}
+
+/* Riferimento nel testo */
+a.footnote-ref, sup a {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.72em;
+  color: var(--n-red);
+  text-decoration: none;
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ─────────────────────────────────────────
+   LAYOUT MEDIA QUERY — solo HTML, non PDF
+───────────────────────────────────────── */
+@media screen {
+  html {
+    background: #111009;
+    background-image: radial-gradient(ellipse at 40% 30%, #1c1810 0%, #0a0906 100%);
+    padding: 30px 16px;
+    min-height: 100vh;
+  }
+
+  body {
+    min-height: 29.7cm;
+  }
+}
+
+/* ─────────────────────────────────────────
+   STAMPA — override per PDF
+───────────────────────────────────────── */
+@media print {
+  html, body {
+    background: var(--n-paper) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  table, blockquote, pre, figure {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}

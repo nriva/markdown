@@ -1,7 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Fjord+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
 /* Imposta il formato di stampa */
 @page {
   size: A5;
   margin: 15mm;
+}
+
+:root {
+  --n-paper:       #f2ede6;   /* Carta avorio sporca */
+  --n-paper2:      #ebe4d8;   /* Carta più calda */
+  --n-paper3:      #ddd5c4;   /* Carta in ombra */
+  --n-ink:         #1a1714;   /* Inchiostro quasi-nero */
+  --n-ink-soft:    #2c2620;   /* Inchiostro morbido */
+  --n-ink-light:   #4a4038;   /* Inchiostro diluito */
+  --n-gray:        #8a8078;   /* Grigio pietra */
+  --n-gray-light:  #b8b0a4;   /* Grigio chiaro */
+  --n-red:         #8c2020;   /* Rosso sangue nordico */
+  --n-red-pale:    #a33030;   /* Rosso più caldo */
+  --n-wood:        #6b4c2a;   /* Legno scuro */
+  --n-wood-light:  #9a7040;   /* Legno chiaro */
+  --n-rune:        #3a3028;   /* Colore rune */
+  --n-border:      rgba(26,23,20,0.35);
+  --n-border-strong: rgba(26,23,20,0.75);
+}
+
+html {
+  font-family: 'Inknut Antiqua', serif;
+  background-color: var(--n-paper);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
 }
 
 /* Reset del contatore pagine */
@@ -15,24 +45,24 @@ body {
   page-break-after: always;
   min-height: 210mm; /*calc(100% - 0px);*/
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
 }
 
 .page .content {
   flex: 1 0 auto;
   column-count: 2;
   column-gap: 5mm; /* puoi cambiare la distanza tra le colonne */
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+
+h1 {
+  column-span: all;
 }
 
 .single-column {
   column-span: all;
 }
-
-.content {
-  padding-left: 5mm;
-  padding-right: 5mm;
-}
-
 
 /* Piè di pagina */
 .page .footer {

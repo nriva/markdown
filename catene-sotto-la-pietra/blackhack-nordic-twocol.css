@@ -1,0 +1,178 @@
+/* ============================================================
+   THE BLACK HACK — NORDIC · LAYOUT DUE COLONNE (addon)
+   
+   Uso insieme al tema principale:
+     pandoc input.md -o output.html \
+       --css blackhack-nordic.css \
+       --css blackhack-nordic-twocol.css \
+       --standalone
+   
+   Nel documento Markdown, il contenuto dentro :::twocol ... :::
+   viene reso a due colonne (richiede --lua-filter o Pandoc ≥ 2.17
+   con fenced divs abilitati).
+   
+   Esempio Markdown:
+   
+     ::: twocol
+     Testo colonna sinistra...
+     
+     Testo colonna destra...
+     :::
+   
+   Oppure avvolgi l'intero body con class="twocol" via template.
+   ============================================================ */
+
+/* ─────────────────────────────────────────
+   LAYOUT DUE COLONNE — applicato a div.twocol
+───────────────────────────────────────── */
+.twocol {
+  column-count: 2;
+  column-gap: 1.1cm;
+  column-rule: 1px dashed rgba(26,23,20,0.3);
+}
+
+/* Forza una colonna per certi elementi (non si spezzano) */
+.twocol h1 {
+  column-span: all;
+  margin-bottom: 0.4em;
+}
+
+/* ─────────────────────────────────────────
+   ELEMENTI CHE NON SI SPEZZANO TRA COLONNE
+───────────────────────────────────────── */
+.twocol table,
+.twocol blockquote,
+.twocol pre,
+.twocol figure,
+.twocol .stat-block {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* ─────────────────────────────────────────
+   SEPARATORE DI COLONNA MANUALE
+   Uso: inserire <div class="colbreak"></div> nel Markdown
+   per forzare l'inizio della colonna destra
+───────────────────────────────────────── */
+.colbreak {
+  break-after: column;
+  height: 0;
+  display: block;
+}
+
+
+/* ─────────────────────────────────────────
+   BOX REGOLA — classe .rule-box
+   Uso:
+   
+     ::: rule-box
+     **REGOLA CHIAVE:** Il Master non tira mai dadi.
+     :::
+───────────────────────────────────────── */
+.rule-box {
+  background: #1a1714;
+  color: #f2ede6;
+  padding: 0.4em 0.8em;
+  margin: 0.6em 0;
+  box-shadow: 3px 3px 0 #8c2020;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.rule-box p {
+  color: #f2ede6;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rule-box strong {
+  color: #ddd5c4;
+}
+
+/* Striscia rossa — evidenziazione TBH */
+.highlight-rule {
+  background: var(--n-red);
+  color: var(--n-paper);
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8em;
+  padding: 0.3em 0.7em;
+  margin: 0.5em 0;
+  letter-spacing: 0.05em;
+  display: block;
+  box-shadow: 2px 2px 0 rgba(26,23,20,0.4);
+}
+
+.highlight-rule p {
+  color: var(--n-paper);
+  font-family: 'Special Elite', monospace;
+}
+
+.highlight-rule p strong {
+  color: var(--n-paper) !important; 
+  font-family: 'Special Elite', monospace;
+}
+
+/* ─────────────────────────────────────────
+   BOX DADO UTILIZZO — classe .dice-track
+   Uso:
+   
+     ::: dice-track
+     d20 → d12 → d10 → d8 → d6 → d4 → ESAURITO
+     :::
+───────────────────────────────────────── */
+.dice-track {
+  display: inline-block;
+  background: #1a1714;
+  color: #f2ede6;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8em;
+  padding: 0.4em 0.75em;
+  margin: 0.5em 0;
+  letter-spacing: 0.05em;
+  box-shadow: 3px 3px 0 #8c2020;
+}
+
+.dice-track p {
+  color: #f2ede6;
+  font-family: 'Special Elite', monospace;
+  font-size: 1em;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────
+   NOTA A MARGINE — classe .nota
+   Uso:
+   
+     ::: nota
+     ᚱ Nota del Master: testo della nota.
+     :::
+───────────────────────────────────────── */
+.nota {
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.8em;
+  color: #8a8078;
+  border-top: 1px dashed rgba(26,23,20,0.32);
+  padding-top: 0.35em;
+  margin-top: 0.55em;
+  line-height: 1.5;
+}
+
+.nota p {
+  font-size: 1em;
+  color: #8a8078;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   COLONNA UNICA FORZATA — classe .fullwidth
+   Forza un blocco a occupare entrambe le colonne
+───────────────────────────────────────── */
+.fullwidth {
+  column-span: all;
+}
