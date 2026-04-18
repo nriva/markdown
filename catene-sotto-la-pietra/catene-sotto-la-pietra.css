@@ -3,9 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
 
-/* ─────────────────────────────────────────
-   PALETTE NORDICA
-───────────────────────────────────────── */
 :root {
   --n-paper:       #f2ede6;   /* Carta avorio sporca */
   --n-paper2:      #ebe4d8;   /* Carta più calda */
@@ -24,13 +21,7 @@
   --n-border-strong: rgba(26,23,20,0.75);
 }
 
-@media print {
-	@page {
-		size: A5;
-		margin: 0; /* Let the .page padding handle margins */
-	}
-	
-}
+
 
 /* ─────────────────────────────────────────
    PAGINA — Carta zine risografica
@@ -50,7 +41,8 @@ html {
 
   /* Bordo grezzo come zine rilegata */
   border: none;
-  
+
+  /* non funziona, lo fa solo sulla prima pagina, non su tutte 
   box-shadow:
     inset 3px 0 0 var(--n-border),
     inset -3px 0 0 var(--n-border),
@@ -60,12 +52,20 @@ html {
     inset -6px 0 0 rgba(26,23,20,0.06),
     5px 5px 0 rgba(26,23,20,0.18),
     8px 8px 0 rgba(26,23,20,0.08);
-
+*/
   color: var(--n-ink);
-  /* A5 Dimensions */
+
+  /* Font base per tutto il documento */
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+
+  /* A5 Dimensions (servono?)
   width: 148mm;
   height: 190mm;
-  
+  */
+
+ 
   &:has(.titlepage) {
     display     : block;
     columns     : 1;
@@ -80,11 +80,14 @@ html {
       font-size: 20px;
     }
   }
+  
 }
 
-div.center_text p {
-	text-align: center !important; 
+/* Reset del contatore pagine */
+body {
+  counter-reset: page;
 }
+
 
 /* ─────────────────────────────────────────
    H1 — Typewriter pesante
@@ -97,6 +100,7 @@ h1 {
   font-variant: normal;
   text-align: center;
   margin-bottom: 0.15em;
+  column-span: all;
 }
 
 
@@ -135,6 +139,7 @@ h2 {
   padding: 0.2em 0 0.2em 0.1em;
   position: relative;
   font-variant: normal;
+  column-span: all;
 }
 
 h2::after {
@@ -169,6 +174,7 @@ h4 {
   font-size: 0.88em;
   letter-spacing: 0.1em;
   margin-top: 0.5em;
+  margin-bottom: 0.2em; /* Spazio molto ridotto */
 }
 
 h5 {
@@ -186,6 +192,7 @@ p {
   line-height: 1.58;
   color: var(--n-ink-soft);
   text-align: left;   /* OSR usa testo ragged-right */
+  margin-top: 0.5em;
   margin-bottom: 0.5em;
   hyphens: none;
 }
@@ -251,6 +258,73 @@ blockquote p::first-letter {
   margin: 0;
 }
 
+/* PAGINAZIONE */
+
+/* Ogni <section class="page"> è una pagina */
+.page, .first-page {
+  position: relative;
+  page-break-after: always;
+  min-height: 210mm; /* A5 height */
+  display: flex;
+  flex-direction: column;  
+}
+
+.page .content {
+  flex: 1 0 auto;
+  column-count: 2;
+  column-gap: 5mm; /* puoi cambiare la distanza tra le colonne */
+  padding-left: 5mm;
+  padding-right: 5mm;
+  padding-top: 5mm;
+}
+
+.first-page .content {
+  flex: 1 0 auto;
+  padding-left: 5mm;
+  padding-right: 5mm;
+  padding-top: 5mm;
+}
+
+.page .footer,.first-page .footer {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 5mm;
+}
+
+/* Numero di pagina automatico */
+.page .footer::after {
+  counter-increment: page;
+  content: "Pagina " counter(page);
+}
+
+/* Numero di pagina automatico */
+.first-page .footer::after {
+  content: "2026 © Associazione Ludica Scaligera";
+}
+
+.singlecolumn {
+    column-span: all;
+}
+
+.container {
+  break-inside: avoid;
+}
+
+.subtitle {
+  font-size: 2em;
+  color: var(--n-red);
+  text-transform: uppercase;
+  margin-top: 0.15em;
+  margin-bottom: 0;
+  text-align: center;
+  display: block;
+}
+
 /* ─────────────────────────────────────────
    DESCRIPTIVE BOX — Bordi irregolari come ritaglio
 ───────────────────────────────────────── */
@@ -274,6 +348,8 @@ blockquote p::first-letter {
   box-shadow:
     3px 3px 0 var(--n-border),
     inset 0 0 0 1px rgba(26,23,20,0.05);
+
+  break-inside: avoid;
 }
 
 /* Runa decorativa angolo */
@@ -300,6 +376,8 @@ table {
 
   /* Leggero disallineamento stampa */
   transform: rotate(0.05deg);
+
+  break-inside: avoid;
 }
 
 table thead tr {
@@ -368,6 +446,8 @@ table tbody td:first-child {
 
   /* Ombra offset — effetto stampa riso */
   box-shadow: 4px 4px 0 var(--n-ink);
+
+  break-inside: avoid;
 }
 
 /* Runa di protezione nell'angolo */
@@ -453,10 +533,11 @@ hr {
   position: relative;
   background: none;
   text-align: center;
+  column-span: all;
 }
 
 hr::before {
-  content: '──── ᚷ ────';
+  content: '──── 🐉 ────';
   position: absolute;
   left: 50%;
   top: 50%;
@@ -510,14 +591,6 @@ ol li::marker {
   font-weight: 400;
 }
 
-/* ─────────────────────────────────────────
-   NUMERO PAGINA
-───────────────────────────────────────── */
-.phb__pageNumber {
-  font-size: 0.75em;
-  color: var(--n-gray);
-  letter-spacing: 0.08em;
-}
 
 /* ─────────────────────────────────────────
    LINK
@@ -536,6 +609,8 @@ img {
   border: 2px solid var(--n-ink);
   box-shadow: 4px 4px 0 var(--n-ink);
   filter: grayscale(25%) contrast(1.05);
+  max-width: 100%;
+  height: auto;
 }
 
 /* ─────────────────────────────────────────
@@ -605,6 +680,21 @@ img {
   margin: 0 0.2em;
 }
 
+
+
+@media print {
+    body {
+    margin: 0;
+  }
+}
+
+@page {
+  size: A5;
+  margin: 15mm;
+}
+
+/* UNUSED CODE BELOW — IGNORE */
+
 /* Watermark */
 .phb::after {
   content: 'ᚦᛖ ᛒᛚᚨᚲᚲ ᚺᚨᚲᚲ';
@@ -619,4 +709,13 @@ img {
   transform: rotate(180deg);
   letter-spacing: 0.2em;
   pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   NUMERO PAGINA
+───────────────────────────────────────── */
+.phb__pageNumber {
+  font-size: 0.75em;
+  color: var(--n-gray);
+  letter-spacing: 0.08em;
 }

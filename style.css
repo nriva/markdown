@@ -2,11 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-/* Imposta il formato di stampa */
-@page {
-  size: A5;
-  margin: 15mm;
-}
 
 :root {
   --n-paper:       #f2ede6;   /* Carta avorio sporca */
@@ -26,19 +21,6 @@
   --n-border-strong: rgba(26,23,20,0.75);
 }
 
-html {
-  font-family: 'Inknut Antiqua', serif;
-  background-color: var(--n-paper);
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-/* Reset del contatore pagine */
-body {
-  counter-reset: page;
-}
-
 /* Ogni <section class="page"> è una pagina */
 .page {
   position: relative;
@@ -56,15 +38,6 @@ body {
   padding-right: 5mm;
 }
 
-h1 {
-  column-span: all;
-}
-
-.single-column {
-  column-span: all;
-}
-
-/* Piè di pagina */
 .page .footer {
   flex: 0 0 auto;
   text-align: center;
@@ -82,6 +55,29 @@ h1 {
   content: "Pagina " counter(page);
 }
 
+/* Colonne */
+
+.single-column {
+  column-span: all;
+}
+
+/* Reset del contatore pagine */
+body {
+  counter-reset: page;
+}
+
+h1 {
+  column-span: all;
+}
+
+html {
+  font-family: 'Inknut Antiqua', serif;
+  background-color: var(--n-paper);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -92,4 +88,10 @@ img {
   body {
     margin: 0;
   }
+}
+
+/* Imposta il formato di stampa */
+@page {
+  size: A5;
+  margin: 15mm;
 }

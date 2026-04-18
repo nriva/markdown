@@ -1,13 +1,26 @@
-# Catene sotto la Pietra{.title}
+::: first-page
+
+::: content
+
+# Catene sotto la Pietra
 
 [Avventura per personaggi mostruosi]{.subtitle}
 
-::: img_center
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH41W9XaOtWOp2wifH2yL9xoCxfhJG1N5Cm9DQxOsZjuL4LD98dOZUZCH5A4JMaIJwix-KGRu1VmXw8Peoj0qM841a1T6PbNrKlIWFk4sHudjFoAzz_Qt5uZOCCzbCb62OyQJF50td-wCzO8HAcha66i5do4qxjtlUx8UCTWvSQ6V7R-tnO55BSf-aNno/w400-h266/Copilot_20260308_185709.png)
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4o8Z-mLRRgYChgw5PWQ0qvwOr6fNbwNNaKhPySeo1ZwAcbWXi3PqCqBBmtmWmgA9bDGdaiNuwBxXcgH_pInnbxIKmxm_B-07go9wzLyKPcOP1mZsnuHsmSrPDR9l7wzFLZveMfk0xXtNFa32uchdrgXYiWSWGOj2BF3SX_Y87ru-AZd95lQqM0amyM_0/s1600/Copilot_20260308_185709.png)
 
 :::
 
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ## Premessa
+
 I personaggi sono:
 
 * coboldi scavatori e trappolieri
@@ -20,7 +33,20 @@ Sono schiavi di un potente Signore del Dungeon. Il dungeon è in costruzione sot
 
 Ma qualcosa non va.
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ## Struttura dell’Avventura
+
+Vediamo i tre Atti nei quali si dipana la trama.
 
 ### Atto I – Vita da Mostri
 
@@ -84,6 +110,17 @@ Lo completano?
 Lo trasformano in rifugio?
 Lo usano per attirare eroi e negoziare?
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ### Spunti Morali Interessanti
 
 Gli “eroi” sono davvero buoni?
@@ -110,6 +147,17 @@ Cosa succede quando chi è nato come “mostro da manuale” vuole autodetermina
 | 🐲 Grottesca e ironica  | burocrazia del dungeon, sindacato dei mostri|
 
 :::
+
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
 
 ## Il Manuale del Perfetto Antieroe
 
@@ -172,6 +220,17 @@ Elementi OSR:
 niente combattimento frontale vantaggioso
 meglio sabotaggio, fuoco, attrazione reciproca
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 4️⃣ **Sala del Cuore**
 
 Il cristallo è sospeso sopra una fossa.
@@ -222,6 +281,17 @@ Se il Cuore viene installato:
 * Le trappole diventano troppo efficienti (niente più eroi, niente bottino).
 * Il cristallo sviluppa un piano proprio.
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ## Prototipo 3B
 
 Un mini-dungeon per personaggi mostruosi
@@ -270,6 +340,7 @@ Il dungeon è molto piccolo.
 5 Sala del Cuore
 
 #### 1. Ingresso
+
 Stanza vuota con detriti.
 Tra i detriti: Tre scheletri di goblin con caschi da lavoro.
 Vicino alla parete: una cassa con strumenti arrugginiti.
@@ -282,6 +353,17 @@ Contiene:
 
 Sulla parete: uno schema tecnico incomprensibile del dungeon.
 Chi studia lo schema capisce che molte trappole non sono calibrate correttamente.
+
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
 
 #### 2. Corridoio della Pressione
 
@@ -369,6 +451,17 @@ I costrutti si muovono solo quando nessuno li guarda.
 Se tutti li osservano → immobili.
 Se qualcuno guarda altrove → si avvicinano lentamente.
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 :::{.monster-block .half_width}
 
 [Costrutto Difettoso (3)]{.sb-name} [MONSTER]{.osr-tag}
@@ -436,6 +529,17 @@ Possibili sviluppi:
 * rivolta dei mostri
 * arrivo di veri avventurieri
 * il cristallo sviluppa coscienza
+
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
 
 ## PNG del Cantiere del Dungeon
 
@@ -525,6 +629,17 @@ abbastanza spaventoso
 **Frasi tipiche**
 “Questa trappola manca di teatralità.”
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 **Segreto**
 Non è stato mandato da nessuno.
 Si è auto-nominato ispettore.
@@ -586,6 +701,7 @@ Il Signore del Dungeon lo considera:
 “un problema logistico.”
 
 ### Il Revisore del Dungeon
+
 *PNG Segreto (per future sessioni)*
 
 Un misterioso individuo che sostiene di lavorare per “La Gilda Internazionale dei Dungeon”.
@@ -615,6 +731,17 @@ Puoi caratterizzarlo come:
 Esempio:
 Sta costruendo il dungeon come arma difensiva, perché ha previsto l’arrivo di una compagnia di eroi destinata a sterminare tutte le razze mostruose della regione.
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ::: {.container}
 
 :::{.stat-block .half_width .box}
@@ -642,7 +769,7 @@ Sta costruendo il dungeon come arma difensiva, perché ha previsto l’arrivo di
 ]{.sb-stat-row}
 :::
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnknbQ9H9a_O1_hsIUQRFhHJRlpUBYCbCkM4sn0yfvKy-pK3GvDiQdQiNlUsyMQOB5zBgEOrxecIYrxCPU2JYPIc-4b73hQBfQbZOOfhFQjcoiVvqCb58DuoSG8YxX7vSXUHpBGWBXUGVEKiZS6Ir6DrpiMaduc95zwgUgQXtd6dKKSICFb-EA2Vh3s0s/s768/mage.jpg)
+![Zarlgon il Meticoloso](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnknbQ9H9a_O1_hsIUQRFhHJRlpUBYCbCkM4sn0yfvKy-pK3GvDiQdQiNlUsyMQOB5zBgEOrxecIYrxCPU2JYPIc-4b73hQBfQbZOOfhFQjcoiVvqCb58DuoSG8YxX7vSXUHpBGWBXUGVEKiZS6Ir6DrpiMaduc95zwgUgQXtd6dKKSICFb-EA2Vh3s0s/s768/mage.jpg)
 
 :::
 
@@ -690,6 +817,17 @@ Quindi il suo dungeon è progettato per:
 * ladri incompetenti
 
 Quando arriverà una vera compagnia… sarà il caos.
+
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
 
 Frasi Tipiche
 
@@ -750,6 +888,17 @@ Sta cercando di tenere qualcosa intrappolato sotto la montagna.
 
 Qualcosa di molto più pericoloso degli avventurieri.
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ## Nuovi Oggetti Magici
 
 Il Cuore Auto-Ricaricante della Trappola Perfetta
@@ -762,12 +911,24 @@ Il Cuore Auto-Ricaricante della Trappola Perfetta
 
 ![Il Cuore Auto-Ricaricante della Trappola Perfetta](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSYAOCSqsrpfl-lP_fG8KDz_7ViBO_EZOM4hYbrXiuZJHY4cc473Y3bJbSokAqyx8ABSbW-yTdSHzPNL3sLy9NTzMYXRXjqNO_Bqc1vCnWKIkBKwttSH8Q06o8rIgW3c6T-No4CzqnGP0dsYm7Iu9Z0A8FwrXqjyU13umZfJdG_jmI67Z3oNG3Eh6zpaY/s320/Gemini_Generated_Image_9veq019veq019veq.png)
 
+:::
+
+::: footer
+:::
+
+:::
+
+::: page
+
+::: content
+
 ## Tabelle
 
 ##### Incidenti sul Cantiere
-|1d8|Incidenti sul Cantiere|
-|-|----------------------------|
-|1|Trappola testata con personale sbagliato|
+
+|1d8|Incidenti sul Cantiere                     |
+|---|-------------------------------------------|
+|1|Trappola testata con personale sbagliato     |
 |2|Creatura del dungeon liberata accidentalmente|
 |3|Crollo parziale del corridoio|
 |4|Sacerdote evoca qualcosa di imbarazzante|
@@ -775,7 +936,6 @@ Il Cuore Auto-Ricaricante della Trappola Perfetta
 |6|Arrivo improvviso di veri avventurieri|
 |7|Esperimento di Miri esplode|
 |8|Il Signore del Dungeon vuole una dimostrazione dal vivo|
-
 
 ##### Umore di Zarglon
 
@@ -788,5 +948,9 @@ Il Cuore Auto-Ricaricante della Trappola Perfetta
 |5|Entusiasta|ha avuto una nuova idea terribile|
 |6|Visionario|vuole espandere il dungeon|
 
+:::
 
+::: footer
+:::
 
+:::

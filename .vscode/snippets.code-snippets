@@ -26,7 +26,7 @@
 	// 	"description": "Insert test block"
 	// }
 
-	 "Print to console": {
+	 "Insert new page": {
 	 	"scope": "markdown",
 	 	"prefix": "newpage",
 	 	"body": [
@@ -39,5 +39,28 @@
 			":::\n"
 	 	],
 	 	"description": "Insert new page"
-	}
+	},
+
+	 "Start new page": {
+	 	"scope": "markdown",
+	 	"prefix": "startpage",
+	 	"body": [
+	 		"::: page\n",
+			"::: content\n"
+	 	],
+	 	"description": "Start new page"
+	},
+	
+
+	 "End page": {
+	 	"scope": "markdown",
+	 	"prefix": "endpage",
+	 	"body": [
+			":::\n",
+			"::: footer",
+			":::\n",
+			":::\n"
+	 	],
+	 	"description": "End page"
+	}	
 }
