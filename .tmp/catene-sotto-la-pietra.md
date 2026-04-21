@@ -2,7 +2,7 @@
 
 ::: content
 
-# Catene sotto la Pietra
+# Cat1ene sotto la Pietra
 
 [Avventura per personaggi mostruosi]{.subtitle}
 
@@ -954,3 +954,4 @@ Il Cuore Auto-Ricaricante della Trappola Perfetta
 :::
 
 :::
+

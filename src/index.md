@@ -10,16 +10,7 @@ Mauris posuere lorem mauris, id gravida arcu faucibus eget. Cras iaculis finibus
 
 Donec sodales eu ipsum sed venenatis. In vestibulum ac ex et blandit. Aliquam risus est, consequat sed mi at, elementum suscipit lectus. Fusce tempus facilisis porttitor. Nunc vel interdum ante. Suspendisse a facilisis libero. Cras eleifend quam in lorem egestas semper.
 
-:::
-
-::: footer
-:::
-
-:::
-
-::: page
-
-::: content
+{{NEW_PAGE}}
 
 # Heading 3
 
@@ -35,17 +26,3 @@ Example post content.
 :::
 
 :::
-
-::: page
-
-::: content
-
-insert content here
-
-:::
-
-::: footer
-:::
-
-:::
-

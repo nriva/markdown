@@ -7,7 +7,9 @@
     "serve": "npx @11ty/eleventy --serve",
     "http": "node serve.cjs",
     "catene-tbh": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -f markdown+implicit_figures -o catene-sotto-la-pietra.html --css blackhack-nordic.css --css blackhack-nordic-twocol.css --standalone",
-    "catene": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -o catene-sotto-la-pietra.html --css catene-sotto-la-pietra.css --standalone --metadata=pagetitle:\"Catene sotto la pietra\""
+    "catene": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -o catene-sotto-la-pietra.html --css catene-sotto-la-pietra.css --standalone --metadata=pagetitle:\"Catene sotto la pietra\"",
+    "build": "node build.js",
+    "watch": "node build.js --watch"
   },
   "keywords": [],
   "author": "MrBurst",
@@ -16,7 +18,10 @@
   "type": "module",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
+    "child_process": "^1.0.2",
+    "chokidar": "^3.6.0",
     "express": "^5.2.1",
+    "fs": "^0.0.1-security",
     "rehype": "^13.0.2"
   }
 }
