@@ -8,8 +8,8 @@
     "http": "node serve.cjs",
     "catene-tbh": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -f markdown+implicit_figures -o catene-sotto-la-pietra.html --css blackhack-nordic.css --css blackhack-nordic-twocol.css --standalone",
     "catene": "cd catene-sotto-la-pietra && pandoc catene-sotto-la-pietra.md -o catene-sotto-la-pietra.html --css catene-sotto-la-pietra.css --standalone --metadata=pagetitle:\"Catene sotto la pietra\"",
-    "build": "node build.js",
-    "watch": "node build.js --watch"
+    "build": "node build.cjs",
+    "watch": "node build.cjs --watch"
   },
   "keywords": [],
   "author": "MrBurst",

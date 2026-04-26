@@ -2,7 +2,7 @@
 
 ::: content
 
-# Cat1ene sotto la Pietra
+# Catene sotto la Pietra
 
 [Avventura per personaggi mostruosi]{.subtitle}
 
