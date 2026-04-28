@@ -26,13 +26,14 @@ function buildFile(filePath) {
     const source = fs.readFileSync(filePath, "utf-8");
     const expanded = expand(source, macros);
     fs.writeFileSync(tmpPath, expanded, "utf-8");
+    console.log(`✓ ${filePath} → ${tmpPath}`);
 
     const css = fs.existsSync(`dist/${filename}.css`)? `--css ${filename}.css` : "";
     // Step 2: pandoc sul file espanso
     pandocCommand = `pandoc "${tmpPath}" -o "${outPath}" ${TEMPLATE} ${css} --standalone`
     console.log("Executing: " + pandocCommand);
     execSync(pandocCommand);
-    console.log(`✓ ${filePath} → ${outPath}`);
+    console.log(`✓ ${tmpPath} → ${outPath}`);
   } catch (err) {
     console.error(`✗ Errore su ${filePath}:`, err.message);
   }

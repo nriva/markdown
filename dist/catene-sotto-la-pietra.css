@@ -30,15 +30,6 @@ html {
   font-family: 'Inknut Antiqua', serif;
   background-color: var(--n-paper);
 
-  /* Texture risografica: grana + macchie irregolari */
-  background-image:
-    /* Grana grossa stampa riso */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.09'/%3E%3C/svg%3E"),
-    /* Macchie stampa irregolari */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.018' numOctaves='2' seed='12'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23b)' opacity='0.05'/%3E%3C/svg%3E"),
-    /* Tono base leggermente non-uniforme */
-    radial-gradient(ellipse 110% 105% at 30% 40%, var(--n-paper) 20%, var(--n-paper2) 65%,            var(--n-paper3) 100%);
-
   /* Bordo grezzo come zine rilegata */
   border: none;
 
@@ -256,6 +247,43 @@ blockquote p::first-letter {
   text-shadow: none;
   padding: 0;
   margin: 0;
+}
+
+.page, .last-page {
+  background-image:    url('img/back.png');
+  background-size:     cover;
+  background-position: center;
+  background-repeat:   no-repeat;
+  min-height: 210mm; /* A5 height */
+}
+
+.last-page {
+  display: flex;
+  align-items: center;      /* centra verticalmente */
+  justify-content: center;  /* centra orizzontalmente */
+}
+
+.last-page .back-cover-text {
+  position: relative;  /* sale sopra l'overlay ::before */
+  z-index: 1;
+  color: var(--n-paper);
+  font-size: x-large;
+}
+
+
+/* Overlay bianco semi-trasparente */
+.page::before {
+  content:  '';
+  position: absolute;
+  inset:     0;
+  background: rgba(255, 255, 255, 0.82);
+  z-index:   0;
+}
+
+/* Tutti i figli diretti salgono sopra l'overlay */
+.page > * {
+  position: relative;
+  z-index:  1;
 }
 
 /* PAGINAZIONE */

@@ -955,3 +955,7 @@ Il Cuore Auto-Ricaricante della Trappola Perfetta
 
 :::
 
+
+::: last-page
+[*Made with AI.*]{.back-cover-text}
+:::

@@ -823,3 +823,7 @@ Il Cuore Auto-Ricaricante della Trappola Perfetta
 |6|Visionario|vuole espandere il dungeon|
 
 {{END_PAGE}}
+
+::: last-page
+[*Made with AI.*]{.back-cover-text}
+:::

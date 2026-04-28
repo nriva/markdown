@@ -35,3 +35,7 @@ Example post content.
 :::
 
 :::
+
+::: last-page
+[Made with AI.]{back-cover-text}
+:::
